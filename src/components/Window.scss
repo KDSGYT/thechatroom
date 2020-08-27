@@ -1,0 +1,64 @@
+#window {
+    background-color: rgb(78, 78, 78);
+    height: 90vh;
+    min-height: 80vh;
+    color: white;
+    width: 65vw;
+    min-width: 60vw;
+    font-size: 1.2rem;
+    border-radius: 10px;
+
+    #chat {
+        // border:2px solid black;
+        height: 93%;
+    }
+
+    #chat-input {
+        outline: none;
+        height: 4%;
+        width: 94.5%;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .sent,
+    .received {
+        width: 91.5%;
+        height: 30px;
+        margin: auto auto;
+        margin-bottom: 0;
+        margin-top: 2.5%;
+
+        .body {
+            height: 80%;
+            padding: 10px 20px;
+            margin: 1.5%;
+            // margin:
+            border-radius: 10px;
+            // border:2px solid black;
+        }
+    }
+
+    .received {
+        float: left;
+        text-align: left;
+
+        .body {
+
+            background-color: rgb(83, 83, 255);
+        }
+
+    }
+
+    .sent {
+        text-align: right;
+
+        float: right;
+
+        .body {
+            background-color: rgb(7, 163, 7);
+
+        }
+    }
+}
