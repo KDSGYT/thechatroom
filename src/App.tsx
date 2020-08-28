@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import './App.css';
 
 function App() {
-  const [userName, setuserName] = useState("KDSG");
+  const [userName, setuserName] = useState();
 
 
   return (
@@ -17,7 +17,7 @@ function App() {
               <Home setUsername={setuserName} />
             </Route>
             <Route path="/chatroom">
-              <Window userName={userName} />
+              <Window userName={userName || "placeholder"} setUsername={setuserName} />
             </Route>
           </Switch>
 

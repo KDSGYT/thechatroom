@@ -7,36 +7,45 @@ const socket: any = io('http://10.0.0.224:8080')
 
 interface WindowProps {
     userName: string
+    setUsername: any
 }
 
-const Window: React.FC<WindowProps> = ({ userName }) => {
+const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
 
     const [color] = useState(`rgb(${random255()}, ${random255()}, ${random255()})`)
     const [msgs, setMsgs] = useState([
-        {
-            id: "sent",
-            data: "hello",
-            sender: userName,
-            style: { color }
-        },
-        {
-            id: "received",
-            data: "hi",
-            sender: "someone",
-            style: { color: "black" }
-        }
+        {}
+        // {
+        //     id: "sent",
+        //     data: "hello",
+        //     sender: userName,
+        //     style: { color }
+        // },
+        // {
+        //     id: "received",
+        //     data: "hi",
+        //     sender: "someone",
+        //     style: { color: "black" }
+        // }
     ])
     const chat: any = msgs.map((item: any) => {
-        return (
-            <div className={item.id} >
-                <span className="body">
-                    <span style={item.style} className="sender">
-                        {item.sender}:
-                </span>
-                    {item.data}
-                </span>
-            </div>
-        )
+
+        try {
+            return (
+                <div className={item.id} >
+                    <span className="body">
+                        <span style={item.style} className="sender">
+                            {item.sender} 
+                    </span>
+                        {item.data}
+                    </span>
+                </div>
+            )
+        } catch {
+            return null;
+        }
+
+       
     })
 
     // socket events
@@ -46,7 +55,6 @@ const Window: React.FC<WindowProps> = ({ userName }) => {
         // socket.emit('Working')
         // sendMsg({ name: userName, data: "data" })
     })
-    // functions
 
     function random255() {
         return Math.floor(Math.random() * 255);
@@ -56,17 +64,26 @@ const Window: React.FC<WindowProps> = ({ userName }) => {
     function sendMsg(data: string): any {
         socket.emit('sent', data)
         setMsgs((prevState: any) => {
+            console.table(prevState)
             const newMsg = {
                 id: "sent",
                 data: data,
                 sender: userName,
                 style: { color }
             }
-            let newState = prevState.push(newMsg)
+            let newState = [
+                ...prevState,
+                newMsg
+            ]
             return newState;
         })
         console.table(msgs)
     }
+
+    //check when the username is changing
+    // useEffect(() => {
+    //     console.log(userName)
+    // }, [userName]);
 
     return (
         <div id="window">
@@ -74,7 +91,9 @@ const Window: React.FC<WindowProps> = ({ userName }) => {
                 {chat}
             </div>
             <ChatInput
+                setUserName={setUsername}
                 sendMsg={sendMsg}
+                userName={userName}
             />
         </div>
     )
