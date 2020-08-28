@@ -6,7 +6,7 @@ io.on( 'connection', (socket) =>{
     console.log(`connected: ${socket.id}`)
     socket.on('disconnect', () =>  console.log("disconnect", socket.id))
     socket.on('sent', (data) => {
-        console.log(data)
+        data.id="received"
         socket.broadcast.emit('received',data);
     })
 

@@ -15,18 +15,6 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
     const [color] = useState(`rgb(${random255()}, ${random255()}, ${random255()})`)
     const [msgs, setMsgs] = useState([
         {}
-        // {
-        //     id: "sent",
-        //     data: "hello",
-        //     sender: userName,
-        //     style: { color }
-        // },
-        // {
-        //     id: "received",
-        //     data: "hi",
-        //     sender: "someone",
-        //     style: { color: "black" }
-        // }
     ])
     const chat: any = msgs.map((item: any) => {
 
@@ -49,11 +37,8 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
     })
 
     // socket events
-    socket.on('received', (data: object) => { console.log('received') })
-
-    useEffect(() => {
-        // socket.emit('Working')
-        // sendMsg({ name: userName, data: "data" })
+    socket.on('received', (data: object) => {
+        return  received(data);
     })
 
     function random255() {
@@ -61,29 +46,36 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
     }
 
 
-    function sendMsg(data: string): any {
-        socket.emit('sent', data)
+    function sendMsg(msg: string): any {
+        const newMsg = {
+            id: "sent",
+            data: msg,
+            sender: userName,
+            style: { color }
+        }
+
+        socket.emit('sent', newMsg)
         setMsgs((prevState: any) => {
             console.table(prevState)
-            const newMsg = {
-                id: "sent",
-                data: data,
-                sender: userName,
-                style: { color }
-            }
+            
             let newState = [
                 ...prevState,
                 newMsg
             ]
             return newState;
         })
-        console.table(msgs)
     }
 
-    //check when the username is changing
-    // useEffect(() => {
-    //     console.log(userName)
-    // }, [userName]);
+    function received(data:any): any{
+        console.log(data);
+        setMsgs((prevState: any) => {
+            let newState = [
+                ...prevState,
+                data
+            ]
+            return newState;
+        })
+    }
 
     return (
         <div id="window">
