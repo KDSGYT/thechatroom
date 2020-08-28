@@ -25,7 +25,7 @@ const ChatInput: React.FC<ChatInputProp> = (props) => {
     function handleSubmit(e: any) {
         e.preventDefault();
         sendMsg(input.current.value);
-        console.log(input.current.value)
+        input.current.value="";
     }
  
 
@@ -42,7 +42,7 @@ const ChatInput: React.FC<ChatInputProp> = (props) => {
     
     return (
         <form onSubmit={handleSubmit} style={style}>
-            <input id="chat-input" ref={input} placeholder="Send Messagge" autoComplete="off" />
+            <input id="chat-input" ref={input} placeholder="Send Message" autoComplete="off" />
         </form>
     )
 }

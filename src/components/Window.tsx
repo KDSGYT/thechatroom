@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import Message from './msg/Message';
+
 import './Window.scss';
 import io from 'socket.io-client';
 import ChatInput from './ChatInput';
 const socket: any = io('http://10.0.0.224:8080')
-
 
 interface WindowProps {
     userName: string
@@ -13,32 +14,23 @@ interface WindowProps {
 const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
 
     const [color] = useState(`rgb(${random255()}, ${random255()}, ${random255()})`)
-    const [msgs, setMsgs] = useState([
-        {}
-    ])
-    const chat: any = msgs.map((item: any) => {
+    const [msgs, setMsgs] = useState([{}])
+    const chat: any = msgs.map((item: any, index: number) => {
 
         try {
             return (
-                <div className={item.id} >
-                    <span className="body">
-                        <span style={item.style} className="sender">
-                            {item.sender} 
-                    </span>
-                        {item.data}
-                    </span>
-                </div>
+                <Message key={index} id={item.id} style={item.style} sender={item.sender} data={item.data}  />
             )
         } catch {
             return null;
         }
 
-       
-    })
 
+    })
+    const chatWindow: any = useRef();
     // socket events
     socket.on('received', (data: object) => {
-        return  received(data);
+        return received(data);
     })
 
     function random255() {
@@ -57,7 +49,7 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
         socket.emit('sent', newMsg)
         setMsgs((prevState: any) => {
             console.table(prevState)
-            
+
             let newState = [
                 ...prevState,
                 newMsg
@@ -66,7 +58,7 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
         })
     }
 
-    function received(data:any): any{
+    function received(data: any): any {
         console.log(data);
         setMsgs((prevState: any) => {
             let newState = [
@@ -76,10 +68,14 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
             return newState;
         })
     }
+    //auto-scroll to the bottom of the chat window
+    useEffect(() => {
+        chatWindow.current.scrollTop = chatWindow.current.scrollHeight;
+    }, [msgs]);
 
     return (
         <div id="window">
-            <div id="chat">
+            <div id="chat" ref={chatWindow}>
                 {chat}
             </div>
             <ChatInput
