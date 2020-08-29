@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Window from './Views/Window/Window'
 import Home from './Views/Home/Home';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 
 function App() {
@@ -20,18 +20,9 @@ function App() {
               <Window userName={userName || "placeholder"} setUsername={setuserName} />
             </Route>
           </Switch>
-
         </Router>
-
-
-        {/* <Route exact path="/">
-  {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
-</Route> */}
-
-
-
       </header>
-    </div>
+    </div> 
   );
 }
 

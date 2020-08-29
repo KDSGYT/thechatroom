@@ -35,9 +35,7 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
     })
     const chatWindow: any = useRef();
     // socket events
-    socket.on('received', (data: object) => {
-        return received(data);
-    })
+    
 
     // function random255() {
     //     return Math.floor(Math.random() * 255);
@@ -64,8 +62,12 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
         })
     }
 
+    /**
+     * 
+     * @param data Data received from the server
+     */
     function received(data: any): any {
-        console.log(data);
+        console.log("data");
         setMsgs((prevState: any) => {
             let newState = [
                 ...prevState,
@@ -74,10 +76,20 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
             return newState;
         })
     }
+
     //auto-scroll to the bottom of the chat window
     useEffect(() => {
         chatWindow.current.scrollTop = chatWindow.current.scrollHeight;
     }, [msgs]);
+
+    useEffect( () =>{
+        socket.on('received', (data: object) => {
+            return received(data);
+        })
+        return(() =>{
+            socket.off('received');
+        })
+    })
 
     return (
         <div id="window">
