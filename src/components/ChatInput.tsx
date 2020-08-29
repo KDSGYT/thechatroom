@@ -3,11 +3,10 @@
 
 import React, { useRef, useEffect} from 'react'
 import { useLocation } from 'react-router-dom';
-
+import '../Views/Window/Window.scss'
 
 interface ChatInputProp {
     sendMsg: any
-    userName: string
     setUserName:any
 }
 
@@ -16,7 +15,7 @@ const ChatInput: React.FC<ChatInputProp> = (props) => {
     function useQuery() {
         return new URLSearchParams(useLocation().search);
     }
-    const { sendMsg, setUserName, userName  } = props;
+    const { sendMsg, setUserName  } = props;
     const input: any = useRef();
 
     const query = useQuery();
@@ -38,11 +37,16 @@ const ChatInput: React.FC<ChatInputProp> = (props) => {
         setUserName(query.get("name"));
         // console.log(query.get("name"))
         // console.log(userName)
-    }, []);
+    });
     
     return (
         <form onSubmit={handleSubmit} style={style}>
-            <input id="chat-input" ref={input} placeholder="Send Message" autoComplete="off" />
+            <input 
+                id="chat-input"
+                ref={input} 
+                placeholder="Send Message" 
+                autoComplete="off" 
+            />
         </form>
     )
 }

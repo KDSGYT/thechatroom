@@ -11,14 +11,9 @@ const Home: React.FC<Home> = ({setUsername}) => {
 
     const input: any = useRef()
     
-    // const [username, setUsername] = useState();
-    
-
-
     function handleSubmit(e: any) {
         e.preventDefault()
         setUsername(input.current.value);
-        // window.location.href = "/chatroom/";
         window.location.href = `/chatroom?name=${input.current.value}`;
         input.current.value=" ";
 
@@ -26,7 +21,16 @@ const Home: React.FC<Home> = ({setUsername}) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input id="user-name" minLength={5} maxLength={11} required type="text" ref={input} placeholder="Enter your name" />
+            <input 
+                id="user-name" 
+                minLength={4} 
+                maxLength={11} 
+                required 
+                autoComplete={"off"}
+                type="text" 
+                ref={input} 
+                placeholder="Enter your name" 
+            />
         </form>
     )
 }

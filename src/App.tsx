@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Window from './components/Window'
-import Home from './components/Home';
+import Window from './Views/Window/Window'
+import Home from './Views/Home/Home';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import './App.css';
 

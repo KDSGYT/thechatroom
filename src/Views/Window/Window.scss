@@ -4,7 +4,7 @@ $color: black;
     background-color: rgb(78, 78, 78);
     height: 90vh;
     min-height: 80vh;
-    color: white;
+    color: black;
     width: 65vw;
     min-width: 60vw;
     font-size: 1.2rem;
@@ -48,6 +48,7 @@ $color: black;
 
     }
 
+    
     #chat-input {
         outline: none;
         height: 4%;
@@ -81,7 +82,7 @@ $color: black;
 
         .body {
 
-            background-color: rgb(83, 83, 255);
+            background-color: rgb(63, 63, 173);
         }
 
     }
@@ -92,8 +93,9 @@ $color: black;
         float: right;
 
         .body {
-            background-color: rgb(7, 163, 7);
+            background-color: rgb(23, 133, 23);
 
         }
     }
 }
+
