@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import './Home.scss';
-
+import SubmitButtton from '../../components/submitButton/SubmitButton'
 interface Home {
     setUsername: any,
     // userName:string
@@ -20,7 +20,7 @@ const Home: React.FC<Home> = ({setUsername}) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form id="username-form" onSubmit={handleSubmit}>
             <input 
                 id="user-name" 
                 minLength={4} 
@@ -31,6 +31,7 @@ const Home: React.FC<Home> = ({setUsername}) => {
                 ref={input} 
                 placeholder="Enter your name" 
             />
+            <SubmitButtton />
         </form>
     )
 }

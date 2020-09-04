@@ -10,7 +10,6 @@ io.on( 'connection', (socket) =>{
     socket.on('disconnect', () =>  console.log("disconnect", socket.id))
     socket.on('sent', (data) => {
         data.id="received";
-        console.log(data)
         socket.broadcast.emit('received',data);
     })
 })

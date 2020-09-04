@@ -4,6 +4,7 @@
 import React, { useRef, useEffect} from 'react'
 import { useLocation } from 'react-router-dom';
 import '../Views/Window/Window.scss'
+import SubmitButton from './submitButton/SubmitButton';
 
 interface ChatInputProp {
     sendMsg: any
@@ -47,6 +48,7 @@ const ChatInput: React.FC<ChatInputProp> = (props) => {
                 placeholder="Send Message" 
                 autoComplete="off" 
             />
+            <SubmitButton/>
         </form>
     )
 }

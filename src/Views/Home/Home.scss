@@ -1,8 +1,17 @@
-#user-name{
-    border:none;
-    font-size: 1rem;
-    padding: 10px;
-    border-radius:10px;
-    outline:none;
+#username-form{
+    // border:2px solid black;
+    display: flex;
+    width: 20vw;
+    height:3vw;
+    flex-direction: row;
+    justify-content: center;
+    #user-name{
+        border:none;
+        font-size: 18px;
+        padding: 10px;
+        border-radius:5px;
+        outline:none;
+        
+    }
     
 }
