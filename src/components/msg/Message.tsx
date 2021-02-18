@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import CSSTransitionGroup from 'react-transition-group/CSSTransition';
 import '../Transition.scss';
-
+import './Message.scss';
 
 interface MsgProps {
     id: string,

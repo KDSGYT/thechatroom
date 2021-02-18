@@ -9,6 +9,8 @@ $color: black;
     min-width: 50vw;
     font-size: 1.2rem;
     border-radius: 10px;
+
+    
     // customize the scrollbar
     ::-webkit-scrollbar {
         width: 10px;
@@ -38,67 +40,7 @@ $color: black;
     }
 
 
-    #chat {
-        // border:2px solid black;
-        height: 90%;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        padding-bottom:10px;
-
-
-    }
-
     
-    #chat-input {
-        outline: none;
-        height: 4%;
-        max-width: 93.5%;
-        min-width: 90%;
-        padding: 5px 10px;
-        // margin-bottom:100px;
-        border: none;
-        border-radius: 10px;
-    }
-
-    .sent,
-    .received {
-        width: 91.5%;
-        height: 30px;
-        margin: auto auto;
-        margin-bottom: 0;
-        margin-top: 2.5%;
-
-        .body {
-            height: 80%;
-            padding: 10px 20px;
-            margin: 1.5%;
-            // margin:
-            border-radius: 10px;
-            // border:2px solid black;
-        }
-    }
-
-    .received {
-        float: left;
-        text-align: left;
-
-        .body {
-
-            background-color: rgb(63, 63, 173);
-        }
-
-    }
-
-    .sent {
-        text-align: right;
-
-        float: right;
-
-        .body {
-            background-color: rgb(23, 133, 23);
-
-        }
-    }
 }
 
 @media screen and (max-width:768px){

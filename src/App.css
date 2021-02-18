@@ -12,5 +12,5 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  overflow:hidden;
+  /* overflow:hidden; */
 }

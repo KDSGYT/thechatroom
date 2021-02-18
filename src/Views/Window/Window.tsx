@@ -15,6 +15,7 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
 
     // const [color] = useState(`rgb(${random255()}, ${random255()}, ${random255()})`)
     const [msgs, setMsgs] = useState([{}])
+    const chatWindow: any = useRef();
     const chat: any = msgs.map((item: any, index: number) => {
 
         try {
@@ -33,14 +34,7 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
 
 
     })
-    const chatWindow: any = useRef();
     // socket events
-    
-
-    // function random255() {
-    //     return Math.floor(Math.random() * 255);
-    // }
-
 
     function sendMsg(msg: string): any {
         const newMsg = {
@@ -52,8 +46,6 @@ const Window: React.FC<WindowProps> = ({ userName, setUsername }) => {
 
         socket.emit('sent', newMsg)
         setMsgs((prevState: any) => {
-            console.table(prevState)
-
             let newState = [
                 ...prevState,
                 newMsg

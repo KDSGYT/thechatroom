@@ -1,0 +1,23 @@
+#chat {
+    height: 90%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: 10px;
+}
+
+
+#chat-input {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+
+    input[type="text"] {
+        padding:1%;
+        width:70%;
+        outline: none;
+        border:none;
+        border-radius: 7px;
+    }
+}

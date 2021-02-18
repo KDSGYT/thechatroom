@@ -1,22 +1,22 @@
+import { Button } from '@material-ui/core';
 import React, { FC } from 'react';
 import './SubmitButton.scss'
-/**
- * Style Instructions:
- * 
- * 1.Style  the button using #submit-button
- */
 
-//  PropTypes
 interface buttonProps {
     name?: any
 }
 
-const SubmitButton: FC<buttonProps> = ({ name ="\u276F" }) => {
+const SubmitButton: FC<buttonProps> = ({ name = "Submit" }) => {
 
     return (
-        <button id="submit-button" type="submit" >
-            {name}
-        </button>
+        < Button
+            variant="contained"
+            color="primary"
+            id="#submit-button"
+            // endIcon={ }
+        >
+            Send
+        </  Button>
     )
 
 }

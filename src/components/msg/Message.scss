@@ -1,0 +1,38 @@
+.sent,
+.received {
+    width: 91.5%;
+    height: 30px;
+    margin: auto auto;
+    margin-bottom: 0;
+    margin-top: 2.5%;
+
+    .body {
+        height: 80%;
+        padding: 10px 20px;
+        margin: 1.5%;
+        border-radius: 10px;
+        // border:2px solid black;
+    span{
+        margin: 0 5px;
+    }        
+    }
+}
+
+.received {
+    float: left;
+    text-align: left;
+
+    .body {
+        background-color: rgb(63, 63, 173);
+    }
+}
+
+.sent {
+    text-align: right;
+    float: right;
+
+    .body {
+        background-color: rgb(23, 133, 23);
+
+    }
+}

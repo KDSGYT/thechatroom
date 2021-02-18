@@ -3,7 +3,7 @@
 
 import React, { useRef, useEffect} from 'react'
 import { useLocation } from 'react-router-dom';
-import '../Views/Window/Window.scss'
+import './ChatInput.scss'
 import SubmitButton from './submitButton/SubmitButton';
 
 interface ChatInputProp {
@@ -29,10 +29,6 @@ const ChatInput: React.FC<ChatInputProp> = (props) => {
     }
  
 
-    const style = {
-        height: "100%"
-    }
-
 
     useEffect(() => {
         setUserName(query.get("name"));
@@ -41,9 +37,9 @@ const ChatInput: React.FC<ChatInputProp> = (props) => {
     });
     
     return (
-        <form onSubmit={handleSubmit} style={style}>
+        <form onSubmit={handleSubmit} id="chat-input">
             <input 
-                id="chat-input"
+                type="text"
                 ref={input} 
                 placeholder="Send Message" 
                 autoComplete="off" 
